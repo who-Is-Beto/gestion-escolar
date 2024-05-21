@@ -1,0 +1,20 @@
+{
+  "name": "gestion_escolar",
+  "version": "1.0.0",
+  "description": "Proyecto de gestión escolar que permite firmar documentos digitalemente",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sau-c/Gestion_escolar.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sau-c/Gestion_escolar/issues"
+  },
+  "homepage": "https://github.com/sau-c/Gestion_escolar#readme"
+}
