@@ -6,11 +6,11 @@ const path = require('path');
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Requiere y usa las rutas definidas en la carpeta 'routes'
-const indexRouter = require('./routes/index');
-const datosAcademicosRouter = require('./routes/datos_academicos');
-const horarioRouter = require('./routes/horario');
-const calificacionesRouter = require('./routes/calificaciones');
-const solicitarDocumentosRouter = require('./routes/solicitar_documentos');
+const indexRouter = require('./routes/index.js');
+const datosAcademicosRouter = require('./routes/datos_academicos.js');
+const horarioRouter = require('./routes/horario.js');
+const calificacionesRouter = require('./routes/calificaciones.js');
+const solicitarDocumentosRouter = require('./routes/solicitar_documentos.js');
 
 app.use('/', indexRouter);
 app.use('/datos_academicos', datosAcademicosRouter);
