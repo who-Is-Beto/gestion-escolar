@@ -3,38 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escuela Secundaria "Isaac Newton"</title>
-    <link rel="stylesheet" href="styles/main.css">
+    <title>Solicitar Documentos</title>
+    <link rel="stylesheet" href="styles/solicitar_documentos.css">
 </head>
 <body>
-    <div class="container">
-        <div class="sidebar">
-            <div class="profile">
-                <img src="images/profile.png" alt="Profile Picture" class="profile-img">
-                <h2>Saúl Castañeda</h2>
-                <p>3er grado</p>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/datos_academicos">Datos Académicos</a></li>
+                <li><a href="/horario">Horario</a></li>
+                <li><a href="/calificaciones">Calificaciones</a></li>
+                <li><a href="/solicitar_documentos">Solicitar Documentos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Solicitar Documentos</h1>
+        <form action="/submit_document_request" method="POST">
+            <div class="form-group">
+                <label for="document-type">Tipo de Documento:</label>
+                <select id="document-type" name="document-type" required>
+                    <option value="certificado">Certificado</option>
+                    <option value="constancia">Constancia</option>
+                    <option value="historial">Historial Académico</option>
+                </select>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="/">Datos académicos</a></li>
-                    <li><a href="/horario">Horario</a></li>
-                    <li><a href="/calificaciones">Calificaciones</a></li>
-                    <li><a href="/solicitar_documentos">Solicitar documentos</a></li>
-                </ul>
-            </nav>
-        </div>
-        <div class="main-content">
-            <header>
-                <img src="images/school_logo.png" alt="School Logo" class="school-logo">
-                <div class="header-text">
-                    <h1>ESCUELA SECUNDARIA "ISAAC NEWTON"</h1>
-                </div>
-                <img src="images/sac.png" alt="SAC Logo" class="sac-logo">
-            </header>
-            <div class="content">
-                <img src="images/school.png" alt="School Courtyard" class="main-image">
+
+            <div class="form-group">
+                <label for="additional-info">Información Adicional:</label>
+                <textarea id="additional-info" name="additional-info" rows="4" placeholder="Proporcione cualquier información adicional aquí..."></textarea>
             </div>
-        </div>
-    </div>
+
+            <button type="submit">Solicitar Documento</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Gestión Escolar</p>
+    </footer>
 </body>
 </html>
