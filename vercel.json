@@ -17,7 +17,7 @@
       },
       {
         "src": "/(.*)",
-        "dest": "/routes/$1"
+        "dest": "/public/$1"
       }
     ]
   }
