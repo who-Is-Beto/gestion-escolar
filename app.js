@@ -1,22 +1,30 @@
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 3000;
+const path = require('path');
 
-// Middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-console.log('Middleware setup complete.');
+// Configuración para servir archivos estáticos desde la carpeta 'public'
+app.use(express.static(path.join(__dirname, 'public')));
 
-// Routes
-app.use('/api', require('./routes/index'));
-console.log('Routes setup complete.');
+// Requiere y usa las rutas definidas en la carpeta 'routes'
+const indexRouter = require('./routes/index');
+const datosAcademicosRouter = require('./routes/datos_academicos');
+const horarioRouter = require('./routes/horario');
+const calificacionesRouter = require('./routes/calificaciones');
+const solicitarDocumentosRouter = require('./routes/solicitar_documentos');
 
-// Static files
-app.use(express.static('public'));
-console.log('Static files setup complete.');
+app.use('/', indexRouter);
+app.use('/datos_academicos', datosAcademicosRouter);
+app.use('/horario', horarioRouter);
+app.use('/calificaciones', calificacionesRouter);
+app.use('/solicitar_documentos', solicitarDocumentosRouter);
 
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+// Maneja cualquier otra ruta y envía el archivo index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-module.exports = app;
+// Inicia el servidor
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor corriendo en el puerto ${PORT}`);
+});
