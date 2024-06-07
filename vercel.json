@@ -2,18 +2,18 @@
   "version": 2,
   "builds": [
     {
-      "src": "routes/**/*.js",
-      "use": "@vercel/node"
+      "src": "public/**/*.html",
+      "use": "@vercel/static"
     },
     {
-      "src": "public/**/*",
-      "use": "@vercel/static"
+      "src": "routes/**/*.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/public"
+      "dest": "/public/$1"
     }
   ]
 }
