@@ -114,6 +114,15 @@ header p {
         flex-direction: column;
     }
 
+    header {
+        padding: 10px;
+        flex-direction: column;
+    }
+
+    .school-logo, .sac-logo {
+        height: 60px;
+    }
+
     .sidebar {
         width: 100%;
         padding: 10px 0;
@@ -125,15 +134,6 @@ header p {
 
     .main-content {
         flex-grow: 0;
-    }
-
-    header {
-        padding: 10px;
-        flex-direction: column;
-    }
-
-    .school-logo, .sac-logo {
-        height: 60px;
     }
 
     header h1 {

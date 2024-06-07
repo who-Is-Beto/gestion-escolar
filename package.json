@@ -1,13 +1,12 @@
 {
-    "name": "nombre-del-proyecto",
-    "version": "1.0.0",
-    "description": "Descripción del proyecto",
-    "main": "app.js",
-    "scripts": {
-      "start": "node app.js"
-    },
-    "dependencies": {
-      "express": "^4.17.1"
-    }
+  "name": "gestion_escolar",
+  "version": "1.0.0",
+  "description": "Aplicación para gestionar alumnos, profesores y calificaciones.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
-  
+}
