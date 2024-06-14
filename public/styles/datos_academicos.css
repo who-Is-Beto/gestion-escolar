@@ -1,85 +1,169 @@
+/* Estilos globales */
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
-    height: 100vh;
+    flex-direction: column;
+    min-height: 100vh;
     background-color: #f0f0f0;
 }
+
+/* Contenedor principal */
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+/* Barra lateral */
 .sidebar {
-    background-color: #4d4d67;
+    width: 250px;
+    background-color: #4A4A4A;
     color: white;
-    width: 20%;
-    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 20px;
+    flex-shrink: 0;
+    box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Perfil en la barra lateral */
+.profile {
     text-align: center;
 }
-.sidebar img {
+
+.profile-img {
     width: 100px;
     height: 100px;
     border-radius: 50%;
     margin-bottom: 10px;
+    border: 3px solid #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-.sidebar h2 {
-    margin: 10px 0;
+
+.profile h2, .profile p {
+    margin: 0;
 }
-.sidebar p {
-    margin: 5px 0;
-}
-.sidebar nav button {
-    color: white;
-    background-color: transparent;
-    border: none;
-    margin: 10px 0;
-    padding: 10px;
+
+/* Navegación en la barra lateral */
+nav ul {
+    list-style-type: none;
+    padding: 0;
     width: 100%;
-    text-align: left;
-    cursor: pointer;
-    font-size: 16px;
 }
-.sidebar nav button:hover {
-    background-color: #6c6c82;
+
+nav ul li {
+    width: 100%;
 }
+
+nav ul li a {
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #575757;
+}
+
+/* Contenido principal */
 .main-content {
-    width: 80%;
-    padding: 20px;
-    background-color: white;
+    flex-grow: 1;
+    background-color: #FFFFFF;
     display: flex;
     flex-direction: column;
+    border-radius: 20px 0 0 20px;
+    overflow: hidden;
+    box-shadow: -2px 0px 10px rgba(0, 0, 0, 0.1);
 }
-.header {
-    background-color: #f97316;
-    color: white;
+
+/* Encabezado */
+header {
+    background-color: #FFA500;
+    color: black;
     padding: 20px;
-    text-align: center;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
-.header img {
+
+.header-text {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.school-logo, .sac-logo {
     height: 80px;
 }
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+/* Subtítulo */
+.subheader {
+    margin-top: 20px;
+    font-size: 24px;
+    font-style: italic;
+    color: #333;
+}
+
+/* Contenido dentro de main-content */
 .content {
     padding: 20px;
+    text-align: left;
     flex-grow: 1;
-}
-.student-info, .academic-info {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
-.upload-section {
+
+.student-info, .academic-info {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+}
+
+.student-info img {
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.student-info div, .academic-info div {
+    margin-bottom: 15px;
+}
+
+.academic-info {
+    margin-top: 40px;
+}
+
+.academic-info div {
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+}
+
+footer {
+    background-color: #f0f0f0;
+    padding: 10px 0;
     text-align: center;
-}
-.upload-section input {
-    display: none;
-}
-.upload-section label {
-    background-color: #ccc;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    display: inline-block;
+    margin-top: auto;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    color: #777;
 }
