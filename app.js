@@ -3,7 +3,7 @@ const app = express();
 const path = require('path');
 
 // Configuración para servir archivos estáticos desde la carpeta 'public'
-app.use(express.static(path.join(__dirname, 'api/public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Requiere y usa las rutas definidas en la carpeta 'routes'
 const indexRouter = require('./api/routes/index.js');
