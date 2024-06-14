@@ -3,38 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escuela Secundaria "Isaac Newton"</title>
-    <link rel="stylesheet" href="styles/main.css">
+    <title>Datos Académicos</title>
+    <link rel="stylesheet" href="styles/datos_academicos.css">
 </head>
 <body>
-    <div class="container">
-        <div class="sidebar">
-            <div class="profile">
-                <img src="images/profile.png" alt="Profile Picture" class="profile-img">
-                <h2>Saúl Castañeda</h2>
-                <p>3er grado</p>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="/">Datos académicos</a></li>
-                    <li><a href="/horario">Horario</a></li>
-                    <li><a href="/calificaciones">Calificaciones</a></li>
-                    <li><a href="/solicitar_documentos">Solicitar documentos</a></li>
-                </ul>
-            </nav>
+    <div class="sidebar">
+        <div>
+            <img src="default-profile.png" alt="Profile Picture">
+            <h2>Saúl Castañeda</h2>
+            <p>Estudiante</p>
+            <p>Ingeniería Telemática</p>
         </div>
-        <div class="main-content">
-            <header>
-                <img src="images/school_logo.png" alt="School Logo" class="school-logo">
-                <div class="header-text">
-                    <h1>ESCUELA SECUNDARIA "ISAAC NEWTON"</h1>
+        <nav>
+            <button onclick="navigateTo('datos_academicos')">Datos académicos</button>
+            <button onclick="navigateTo('horario')">Horario</button>
+            <button onclick="navigateTo('calificaciones')">Calificaciones</button>
+            <button onclick="navigateTo('notificaciones')">Notificaciones</button>
+        </nav>
+    </div>
+    <div class="main-content" id="main-content">
+        <div class="header">
+            <img src="logo1.png" alt="Escuela Secundaria Isaac Newton">
+            <h1>Datos Académicos</h1>
+            <img src="logo2.png" alt="SEP">
+        </div>
+        <div class="content">
+            <div class="student-info">
+                <div>
+                    <p><strong>Nombre:</strong> Saúl</p>
+                    <p><strong>Apellidos:</strong> Castañeda</p>
+                    <p><strong>CURP:</strong> XXXXXXXXXXXXXXXXXX</p>
+                    <p><strong>Boleta:</strong> 123456789</p>
+                    <p><strong>Plantel:</strong> Isaac Newton</p>
                 </div>
-                <img src="images/sac.png" alt="SAC Logo" class="sac-logo">
-            </header>
-            <div class="content">
-                <img src="images/school.png" alt="School Courtyard" class="main-image">
+                <div>
+                    <img src="default-profile.png" alt="Profile Picture" style="width: 100px; height: 100px;">
+                </div>
+            </div>
+            <div class="academic-info">
+                <div>
+                    <p><strong>Promedio:</strong> X.XX</p>
+                    <p><strong>Grado:</strong> 2°</p>
+                    <p><strong>Grupo:</strong> B</p>
+                </div>
+            </div>
+            <div class="upload-section">
+                <h3>Subir documentación</h3>
+                <input type="file" id="fileUpload">
+                <label for="fileUpload">Arrastra o da clic para subir tus archivos</label>
             </div>
         </div>
     </div>
+    <script>
+        function navigateTo(section) {
+            document.querySelector('.header h1').innerText = section.charAt(0).toUpperCase() + section.slice(1).replace('_', ' ');
+            // Aquí puedes agregar la lógica para mostrar contenido diferente basado en el botón presionado
+            // Por ejemplo, podrías cambiar el contenido del div con id "main-content"
+        }
+    </script>
 </body>
 </html>

@@ -1,0 +1,85 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+.sidebar {
+    background-color: #4d4d67;
+    color: white;
+    width: 20%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.sidebar img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+.sidebar h2 {
+    margin: 10px 0;
+}
+.sidebar p {
+    margin: 5px 0;
+}
+.sidebar nav button {
+    color: white;
+    background-color: transparent;
+    border: none;
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    font-size: 16px;
+}
+.sidebar nav button:hover {
+    background-color: #6c6c82;
+}
+.main-content {
+    width: 80%;
+    padding: 20px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+.header {
+    background-color: #f97316;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header img {
+    height: 80px;
+}
+.content {
+    padding: 20px;
+    flex-grow: 1;
+}
+.student-info, .academic-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.upload-section {
+    text-align: center;
+}
+.upload-section input {
+    display: none;
+}
+.upload-section label {
+    background-color: #ccc;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+}

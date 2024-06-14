@@ -6,11 +6,11 @@ const path = require('path');
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Requiere y usa las rutas definidas en la carpeta 'routes'
-const indexRouter = require('./routes/index.js');
-const datosAcademicosRouter = require('./routes/datos_academicos.js');
-const horarioRouter = require('./routes/horario.js');
-const calificacionesRouter = require('./routes/calificaciones.js');
-const solicitarDocumentosRouter = require('./routes/solicitar_documentos.js');
+const indexRouter = require('./api/routes/index.js');
+const datosAcademicosRouter = require('./api/routes/datos_academicos.js');
+const horarioRouter = require('./api/routes/horario.js');
+const calificacionesRouter = require('./api/routes/calificaciones.js');
+const solicitarDocumentosRouter = require('./api/routes/solicitar_documentos.js');
 
 app.use('/', indexRouter);
 app.use('/datos_academicos', datosAcademicosRouter);
@@ -20,7 +20,7 @@ app.use('/solicitar_documentos', solicitarDocumentosRouter);
 
 // Maneja cualquier otra ruta y envía el archivo index.html
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, '/public', 'index.html'));
 });
 
 // Inicia el servidor

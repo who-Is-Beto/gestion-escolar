@@ -1,50 +1,199 @@
+/* Estilos globales */
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
 }
 
-header {
-    background-color: #007bff;
-    color: #fff;
-    padding: 20px;
+/* Contenedor principal */
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+/* Barra lateral */
+.sidebar {
+    width: 250px;
+    background-color: #4A4A4A;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    flex-shrink: 0;
+}
+
+/* Perfil en la barra lateral */
+.profile {
     text-align: center;
 }
 
-main {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.calificaciones, .historial {
-    margin-bottom: 30px;
-}
-
-h2 {
-    color: #007bff;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-li {
+.profile-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
     margin-bottom: 10px;
 }
 
-table {
+.profile h2, .profile p {
+    margin: 0;
+}
+
+/* Navegación en la barra lateral */
+nav ul {
+    list-style-type: none;
+    padding: 0;
     width: 100%;
+}
+
+nav ul li {
+    width: 100%;
+}
+
+nav ul li a {
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+}
+
+nav ul li a:hover {
+    background-color: #575757;
+}
+
+/* Contenido principal */
+.main-content {
+    flex-grow: 1;
+    background-color: #F0F0F0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Encabezado */
+header {
+    background-color: #FFA500;
+    color: black;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.header-text {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.school-logo, .sac-logo {
+    height: 80px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+/* Subtítulo */
+.subheader {
+    margin-top: 40px;
+    font-size: 28px; /* Tamaño aumentado */
+    font-style: italic;
+}
+
+/* Contenido dentro de main-content */
+.content {
+    padding: 20px;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.calificaciones-table, .historial-table {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
     border-collapse: collapse;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
-th, td {
-    border: 1px solid #ccc;
-    padding: 8px;
+.calificaciones-table th, .calificaciones-table td, 
+.historial-table th, .historial-table td {
+    padding: 15px;
     text-align: left;
+    border: 1px solid #DDD;
 }
 
-th {
-    background-color: #f2f2f2;
+.calificaciones-table th, .historial-table th {
+    background-color: #FFA500;
+    color: black;
+}
+
+.calificaciones-table tbody tr:nth-child(odd), 
+.historial-table tbody tr:nth-child(odd) {
+    background-color: #F9F9F9;
+}
+
+.calificaciones-table tbody tr:hover, 
+.historial-table tbody tr:hover {
+    background-color: #F1F1F1;
+}
+
+.historial-table {
+    margin-top: 40px;
+}
+
+/* Media queries para dispositivos más pequeños */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    nav ul li a {
+        padding: 10px;
+    }
+
+    .main-content {
+        flex-grow: 0;
+    }
+
+    header {
+        padding: 10px;
+        flex-direction: column;
+    }
+
+    .school-logo, .sac-logo {
+        height: 60px;
+    }
+
+    header h1 {
+        font-size: 20px;
+    }
+
+    .main-image {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 16px;
+    }
+
+    .school-logo, .sac-logo {
+        height: 50px;
+    }
 }
