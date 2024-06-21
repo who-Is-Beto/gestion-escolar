@@ -4,7 +4,6 @@ const path = require('path');
 const app = require('../config/firebase');
 const { collection, doc, setDoc } = require('firebase/firestore');
 
-
 router.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../c./public', 'index.html'));
 });
@@ -12,13 +11,24 @@ router.get('/', (req, res) => {
 const estudiantesRef = collection(app.db, "estudiantes");
 
 router.post('/registro', async (req, res) => {
-  
-  await setDoc(doc(estudiantesRef, "boleta"), {
-    firstName: "Luis", lastName: "CA", country: "USA",
-    capital: false, population: 860000,
-    regions: ["west_coast", "norcal"] });
+  try {
+    const { firstName, lastName, birthYear, curp, boleta } = req.body;
 
+    // Guardar los datos en Firestore
+    await setDoc(doc(estudiantesRef, boleta), {
+      firstName,
+      lastName,
+      birthYear,
+      curp,
+      boleta
+    });
+
+    // Redirigir a la página de datos académicos (ajusta la ruta según tu estructura)
     res.redirect('/datos_academicos');
+  } catch (error) {
+    console.error('Error al registrar el documento:', error);
+    res.status(500).send('Error interno al registrar el usuario');
+  }
 });
 
 module.exports = router;

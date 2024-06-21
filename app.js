@@ -20,6 +20,8 @@ const calificacionesRouter = require('./api/routes/calificaciones.js');
 const solicitarDocumentosRouter = require('./api/routes/solicitar_documentos.js');
 
 app.use(express.json()); // Para analizar JSON en el cuerpo de la solicitud
+// Middleware para parsear el cuerpo de las solicitudes POST
+app.use(express.urlencoded({ extended: true }));
 app.use('/', indexRouter);
 app.use('/datos_academicos', datosAcademicosRouter);
 app.use('/horario', horarioRouter);
