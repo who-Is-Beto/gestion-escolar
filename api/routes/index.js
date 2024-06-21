@@ -17,6 +17,8 @@ router.post('/registro', async (req, res) => {
     firstName: "Luis", lastName: "CA", country: "USA",
     capital: false, population: 860000,
     regions: ["west_coast", "norcal"] });
+
+    res.redirect('/datos_academicos');
 });
 
 module.exports = router;
