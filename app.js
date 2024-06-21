@@ -1,6 +1,13 @@
+//appjs
 const express = require('express');
 const app = express();
 const path = require('path');
+
+// Inicia el servidor
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor corriendo en el puerto ${PORT}`);
+});
 
 // Configuración para servir archivos estáticos desde la carpeta 'public'
 app.use(express.static(path.join(__dirname, 'public')));
@@ -12,6 +19,7 @@ const horarioRouter = require('./api/routes/horario.js');
 const calificacionesRouter = require('./api/routes/calificaciones.js');
 const solicitarDocumentosRouter = require('./api/routes/solicitar_documentos.js');
 
+app.use(express.json()); // Para analizar JSON en el cuerpo de la solicitud
 app.use('/', indexRouter);
 app.use('/datos_academicos', datosAcademicosRouter);
 app.use('/horario', horarioRouter);
@@ -23,8 +31,4 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '/public', 'index.html'));
 });
 
-// Inicia el servidor
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en el puerto ${PORT}`);
-});
+
