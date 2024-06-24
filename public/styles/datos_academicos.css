@@ -6,16 +6,41 @@ body {
     flex-direction: column;
     min-height: 100vh;
     background-color: #f0f0f0;
+    overflow: hidden; /* Evita doble scroll */
+}
+
+header {
+    background-color: #FFA500;
+    color: black;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.header-text {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.school-logo, .sac-logo {
+    height: 50px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 20px;
 }
 
 /* Contenedor principal */
 .container {
     display: flex;
     flex-direction: row;
-    height: 100vh;
+    height: calc(100vh - 80px); /* Ajuste por el tamaño del header */
+    overflow: hidden; /* Evita desbordamiento no deseado */
 }
 
-/* Barra lateral */
 .sidebar {
     width: 250px;
     background-color: #4A4A4A;
@@ -26,9 +51,9 @@ body {
     padding-top: 20px;
     flex-shrink: 0;
     box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Permite scroll en la barra lateral */
 }
 
-/* Perfil en la barra lateral */
 .profile {
     text-align: center;
 }
@@ -46,7 +71,6 @@ body {
     margin: 0;
 }
 
-/* Navegación en la barra lateral */
 nav ul {
     list-style-type: none;
     padding: 0;
@@ -70,52 +94,23 @@ nav ul li a:hover {
     background-color: #575757;
 }
 
-/* Contenido principal */
 .main-content {
     flex-grow: 1;
     background-color: #FFFFFF;
     display: flex;
     flex-direction: column;
     border-radius: 20px 0 0 20px;
-    overflow: hidden;
+    overflow: auto; /* Permite scroll en el contenido principal */
     box-shadow: -2px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Encabezado */
-header {
-    background-color: #FFA500;
-    color: black;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.header-text {
-    flex-grow: 1;
-    text-align: center;
-}
-
-.school-logo, .sac-logo {
-    height: 80px;
-}
-
-header h1 {
-    margin: 0;
-    font-size: 24px;
-}
-
-/* Subtítulo */
 .subheader {
-    margin-top: 20px;
-    font-size: 24px;
+    margin: 20px 0;
+    font-size: 18px;
     font-style: italic;
     color: #333;
 }
 
-/* Contenido dentro de main-content */
 .content {
     padding: 20px;
     text-align: left;
@@ -124,6 +119,7 @@ header h1 {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    overflow-y: auto; /* Permite scroll en el contenido */
 }
 
 .student-info, .academic-info {
@@ -134,6 +130,9 @@ header h1 {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 600px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .student-info img {
@@ -143,6 +142,7 @@ header h1 {
 
 .student-info div, .academic-info div {
     margin-bottom: 15px;
+    width: 100%;
 }
 
 .academic-info {
@@ -166,4 +166,72 @@ footer {
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     font-size: 14px;
     color: #777;
+}
+
+/* Media Queries para Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        box-shadow: none;
+    }
+
+    .main-content {
+        border-radius: 0;
+    }
+
+    header {
+        text-align: center;
+    }
+
+    .header-text {
+        margin: 10px 0;
+    }
+
+    .content {
+        padding: 10px;
+    }
+
+    .student-info, .academic-info {
+        max-width: 100%;
+        margin-top: 10px;
+        padding: 10px;
+    }
+
+    .profile-img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .profile-img-small {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul li a {
+        padding: 10px;
+    }
+
+    .school-logo, .sac-logo {
+        height: 40px;
+    }
+
+    .subheader {
+        font-size: 16px;
+    }
+
+    header h1 {
+        font-size: 16px;
+    }
+
+    .student-info img, .profile-img {
+        width: 60px;
+        height: 60px;
+    }
 }

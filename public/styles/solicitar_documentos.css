@@ -1,3 +1,5 @@
+/* styles/solicitar_documentos.css */
+
 /* Estilos globales */
 body {
     margin: 0;
@@ -5,6 +7,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-color: #f0f0f0;
 }
 
 /* Contenedor principal */
@@ -12,6 +15,12 @@ body {
     display: flex;
     flex-direction: row;
     height: 100vh;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
 }
 
 /* Barra lateral */
@@ -24,6 +33,14 @@ body {
     align-items: center;
     padding-top: 20px;
     flex-shrink: 0;
+    box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        padding: 10px 0;
+    }
 }
 
 /* Perfil en la barra lateral */
@@ -59,6 +76,7 @@ nav ul li a {
     text-decoration: none;
     color: white;
     text-align: center;
+    transition: background-color 0.3s ease;
 }
 
 nav ul li a:hover {
@@ -68,9 +86,17 @@ nav ul li a:hover {
 /* Contenido principal */
 .main-content {
     flex-grow: 1;
-    background-color: #F0F0F0;
+    background-color: #FFFFFF;
     display: flex;
     flex-direction: column;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        padding: 10px;
+    }
 }
 
 /* Encabezado */
@@ -82,6 +108,7 @@ header {
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .header-text {
@@ -90,29 +117,30 @@ header {
 }
 
 .school-logo, .sac-logo {
-    height: 80px;
+    height: 60px;
 }
 
 header h1 {
     margin: 0;
-    font-size: 24px;
+    font-size: 20px;
 }
 
-/* Subtítulo */
 .subheader {
-    margin-top: 40px;
-    font-size: 28px; /* Tamaño aumentado */
+    margin-top: 20px;
+    font-size: 18px;
     font-style: italic;
+    color: #333;
 }
 
 /* Formulario */
 form {
     width: 100%;
-    max-width: 400px;
+    max-width: 500px;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin: auto;
 }
 
 .form-group {
@@ -144,15 +172,26 @@ button {
     font-size: 16px;
     border-radius: 4px;
     cursor: pointer;
+    width: 100%;
 }
 
 button:hover {
     background-color: #0056b3;
 }
 
+/* Footer */
 footer {
     background-color: #f0f0f0;
     padding: 10px 0;
     text-align: center;
     margin-top: auto;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    color: #777;
+}
+
+@media (max-width: 768px) {
+    footer {
+        font-size: 12px;
+    }
 }

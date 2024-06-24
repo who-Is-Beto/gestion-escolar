@@ -8,16 +8,4 @@ router.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../../public', 'datos_academicos.html'));
 });
 
-// const estudiantesRef = collection(app.db, "estudiantes");
-
-// router.get('/registro', async (req, res) => {
-  
-//   await setDoc(doc(estudiantesRef, "boleta"), {
-//     firstName: "Luis", lastName: "CA", country: "USA",
-//     capital: false, population: 860000,
-//     regions: ["west_coast", "norcal"] });
-
-//     res.redirect('/datos_academicos');
-// });
-
 module.exports = router;
