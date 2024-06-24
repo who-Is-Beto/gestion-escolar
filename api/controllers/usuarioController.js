@@ -1,5 +1,4 @@
 // api/controllers/usuarioController.js
-
 const { db } = require('../config/firebase');
 const { collection, addDoc } = require('firebase/firestore');
 
