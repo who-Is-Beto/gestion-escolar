@@ -55,8 +55,23 @@
             </div>
         </div>
     </div>
-    <footer>
-        <p>&copy; 2024 Gestión Escolar</p>
-    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const response = await fetch('/api/usuarios');
+                const usuarios = await response.json();
+
+                if (usuarios.length > 0) {
+                    const usuario = usuarios[0]; // Suponiendo que deseas mostrar el primer usuario
+                    document.getElementById('nombre').textContent = usuario.nombre;
+                    document.getElementById('apellidos').textContent = usuario.apellidos;
+                    document.getElementById('curp').textContent = usuario.curp || 'N/A';
+                    document.getElementById('boleta').textContent = usuario.boleta || 'N/A';
+                }
+            } catch (error) {
+                console.error('Error fetching usuarios:', error);
+            }
+        });
+    </script>
 </body>
 </html>

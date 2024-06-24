@@ -1,34 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
-const app = require('../config/firebase');
-const { collection, doc, setDoc } = require('firebase/firestore');
+const { addAlumno, getUsuarios } = require('../controllers/usuarioController'); // Importa la función addAlumno
 
 router.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../c./public', 'index.html'));
+  res.sendFile(path.join(__dirname, '../public', 'index.html')); // Ajusta la ruta de acceso al archivo index.html según tu estructura
 });
 
-const estudiantesRef = collection(app.db, "estudiantes");
-
-router.post('/registro', async (req, res) => {
-  try {
-    const { nombre, apellidos, nacimiento, curp, boleta } = req.body;
-
-    // Guardar los datos en Firestore
-    await setDoc(doc(estudiantesRef, boleta), {
-      nombre,
-      apellidos,
-      nacimiento,
-      curp,
-      boleta
-    });
-
-    // Redirigir a la página de datos académicos (ajusta la ruta según tu estructura)
-    res.redirect('/datos_academicos');
-  } catch (error) {
-    console.error('Error al registrar el documento:', error);
-    res.status(500).send('Error interno al registrar el estudiante');
-  }
-});
+router.post('/registro', addAlumno); // Define la ruta POST para registrar un alumno usando la función addAlumno
+router.get('/api/usuarios', getUsuarios); // Ruta para obtener todos los usuarios
 
 module.exports = router;

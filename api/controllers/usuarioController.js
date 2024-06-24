@@ -1,25 +1,46 @@
 // api/controllers/usuarioController.js
+
 const { db } = require('../config/firebase');
-const { collection, addDoc } = require('firebase/firestore');
+const { collection, doc, setDoc, getDocs } = require('firebase/firestore');
 
 const addAlumno = async (req, res) => {
-  const { firstName, lastName, birthYear } = req.body;
-
-  if (!firstName || !lastName || !birthYear) {
-    return res.status(400).send({ error: "Todos los campos son requeridos" });
-  }
-
   try {
-    const docRef = await addDoc(collection(db, "usuarios"), {
-      firstName,
-      lastName,
-      birthYear
+    const estudiantesRef = collection(db, "estudiantes");
+    const { nombre, apellidos, nacimiento, curp, boleta } = req.body;
+
+    // Guardar los datos en Firestore
+    await setDoc(doc(estudiantesRef, boleta), {
+      nombre,
+      apellidos,
+      nacimiento,
+      curp,
+      boleta
     });
-    res.status(201).send({ message: "Alumno agregado con éxito", id: docRef.id });
-  } catch (e) {
-    console.error("Error adding document: ", e);
-    res.status(500).send({ error: "Error al agregar el alumno" });
+
+    // Redirigir a la página de datos académicos (ajusta la ruta según tu estructura)
+    res.redirect('/datos_academicos'); // Ajusta la ruta según tu estructura de archivos estática
+
+  } catch (error) {
+    console.error('Error al registrar el documento:', error);
+    res.status(500).send('Error interno al registrar el estudiante');
   }
 };
 
-module.exports = { addAlumno };
+const getUsuarios = async (req, res) => {
+  try {
+    const usuariosRef = collection(db, "estudiantes");
+    const querySnapshot = await getDocs(usuariosRef);
+    const usuarios = [];
+
+    querySnapshot.forEach((doc) => {
+      usuarios.push({ id: doc.id, ...doc.data() });
+    });
+
+    res.status(200).json(usuarios);
+  } catch (error) {
+    console.error("Error getting documents:", error);
+    res.status(500).json({ error: "Error al obtener los estudiantes" });
+  }
+};
+
+module.exports = { addAlumno, getUsuarios };
