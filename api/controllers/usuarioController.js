@@ -1,46 +1,94 @@
-// api/controllers/usuarioController.js
+const firebase = require("../config/firebase.js");
+const User = require("../models/users.model.js");
+import {
+  getFirestore,
+  collection,
+  doc,
+  addDoc,
+  getDoc,
+  getDocs,
+  updateDoc,
+  deleteDoc
+} from "firebase/firestore";
 
-const { db } = require('../config/firebase');
-const { collection, doc, setDoc, getDocs } = require('firebase/firestore');
+const db = getFirestore(firebase);
 
-const addAlumno = async (req, res) => {
+export const createAlumno = async (req, res, next) => {
   try {
-    const estudiantesRef = collection(db, "estudiantes");
     const { nombre, apellidos, nacimiento, curp, boleta } = req.body;
+    const alumno = new User(nombre, apellidos, nacimiento, curp, boleta);
 
-    // Guardar los datos en Firestore
-    await setDoc(doc(estudiantesRef, boleta), {
-      nombre,
-      apellidos,
-      nacimiento,
-      curp,
-      boleta
-    });
+    // TO DO: Añadir un middeleware que valide la estructura de los datos recibidos de usuario
+    await addDoc(collection(db, "estudiantes"), alumno);
 
-    // Redirigir a la página de datos académicos (ajusta la ruta según tu estructura)
-    res.redirect('/datos_academicos'); // Ajusta la ruta según tu estructura de archivos estática
-
+    res.status(200).send("Usuario creado correctamente.");
+    res.redirect("/datos_academicos"); // Ajusta la ruta según tu estructura de archivos estática
   } catch (error) {
-    console.error('Error al registrar el documento:', error);
-    res.status(500).send('Error interno al registrar el estudiante');
+    res.status(400).send(error.message);
   }
 };
 
-const getUsuarios = async (req, res) => {
+export const getAllAlumnos = async (req, res) => {
   try {
-    const usuariosRef = collection(db, "estudiantes");
-    const querySnapshot = await getDocs(usuariosRef);
-    const usuarios = [];
+    const alumnos = await getDocs(collection(db, "estudiantes"));
+    const alumnosArray = [];
 
-    querySnapshot.forEach((doc) => {
-      usuarios.push({ id: doc.id, ...doc.data() });
+    if (alumnos.length === 0) {
+      res.status(400).send("No hay alumnos registrados.");
+      return;
+    }
+
+    alumnos.forEach((doc) => {
+      const user = new User(
+        doc.id,
+        doc.data().nombre,
+        doc.data().apellidos,
+        doc.data().nacimiento,
+        doc.data().curp,
+        doc.data().boleta
+      );
+      alumnosArray.push(user);
     });
 
-    res.status(200).json(usuarios);
+    res.status(200).send(alumnosArray);
   } catch (error) {
-    console.error("Error getting documents:", error);
-    res.status(500).json({ error: "Error al obtener los estudiantes" });
+    res.status(400).send(error.message);
   }
 };
 
-module.exports = { addAlumno, getUsuarios };
+export const getAlumno = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const alumno = doc(db, "estudiantes", id);
+    const data = await getDoc(alumno);
+    if (data.exists()) {
+      res.status(200).send(data.data());
+    } else {
+      res.status(404).send("alumno not found");
+    }
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+};
+
+export const updateAlumno = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const data = req.body;
+    const alumno = doc(db, "estudiantes", id);
+    await updateDoc(alumno, data);
+    res.status(200).send("alumno updated successfully");
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+};
+
+export const deleteAlumno = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    await deleteDoc(doc(db, "estudiante", id));
+    res.status(200).send("alumno deleted successfully");
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+};
