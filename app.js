@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 
 import config from "./api/config/config.js";
-import alumnoRouter from "./api/routes/alumno.route.js";
+import alumnoRouter from "./api/routes/alumno.js";
 
 const app = express();
 
